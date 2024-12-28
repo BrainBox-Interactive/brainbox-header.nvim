@@ -91,7 +91,7 @@ function M.gen_header()
     elseif i == #ascii then
       -- Insert update info at the last line
       table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[i]))
-    else if i <= #ascii_text then
+    elseif i <= #ascii_text then
       table.insert(header_lines, M.gen_line(ascii_text[i], ascii[i]))
     else
       table.insert(header_lines, M.gen_line("", ascii[i]))
