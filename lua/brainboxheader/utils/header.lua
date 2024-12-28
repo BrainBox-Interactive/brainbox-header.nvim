@@ -66,6 +66,7 @@ end
 ---@return table: A table ontaining all lines of header.
 function M.gen_header()
   local ascii = config.opts.asciiart
+  local ascii_text = config.opts.asciibrainbox
   local left, right = M.comment_symbols()
   local fill_line = left .. " " .. string.rep("*", config.opts.length - #left - #right - 2) .. " " .. right
   local empty_line = M.gen_line("", "")
@@ -90,8 +91,9 @@ function M.gen_header()
     elseif i == #ascii then
       -- Insert update info at the last line
       table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[i]))
+    else if i <= #ascii_text
+      table.insert(header_lines, M.gen_line(ascii_text[i], ascii[i]))
     else
-      -- Insert regular ASCII art lines
       table.insert(header_lines, M.gen_line("", ascii[i]))
     end
   end
