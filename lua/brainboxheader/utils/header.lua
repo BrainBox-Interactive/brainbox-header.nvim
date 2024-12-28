@@ -84,10 +84,10 @@ function M.gen_header()
       table.insert(header_lines, M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[i]))
     elseif i == 2 then
       table.insert(header_lines, M.gen_line("From BrainBox Interactive, " .. os.date "%Y" .. ".", ascii[i]))
-    elseif i == #ascii - 2 then
+    elseif i == #ascii - 1 then
       -- Insert creation info at the second-to-last line
       table.insert(header_lines, M.gen_line("Created: " .. date .. " by " .. M.user(), ascii[i]))
-    elseif i == #ascii - 1 then
+    elseif i == #ascii then
       -- Insert update info at the last line
       table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[i]))
     else
