@@ -71,20 +71,31 @@ function M.gen_header()
   local empty_line = M.gen_line("", "")
   local date = os.date "%Y/%m/%d %H:%M:%S"
 
-  return {
+  -- Create the header by iterating over the ASCII art array
+  local header_lines = {
     fill_line,
     empty_line,
-    M.gen_line("", ascii[1]),
-    M.gen_line(vim.fn.expand "%:t", ascii[2]),
-    M.gen_line("", ascii[3]),
-    M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[4]),
-    M.gen_line("", ascii[5]),
-    M.gen_line("Created: " .. date .. " by " .. M.user(), ascii[6]),
-    M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[7]),
-    empty_line,
-    fill_line,
   }
+
+  -- Loop through each line of ASCII art
+  for i = 1, #ascii do
+    table.insert(header_lines, M.gen_line("", ascii[i]))
+  end
+
+  -- Add the user and email information
+  table.insert(header_lines, M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[#ascii + 1] or ""))
+  table.insert(header_lines, M.gen_line("", ascii[#ascii + 2] or ""))
+  
+  -- Add creation and update information
+  table.insert(header_lines, M.gen_line("Created: " .. date .. " by " .. M.user(), ascii[#ascii + 3] or ""))
+  table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[#ascii + 4] or ""))
+  
+  table.insert(header_lines, empty_line)
+  table.insert(header_lines, fill_line)
+
+  return header_lines
 end
+
 
 ---Checks if there is a valid header in the current buffer.
 ---@param header table: The header to compare with the contents of the existing buffer.
