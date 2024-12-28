@@ -1,4 +1,4 @@
----@tag 42header.header
+---@tag brainboxheader.header
 
 ---@brief [[
 ---
@@ -7,8 +7,8 @@
 ---@brief ]]
 
 local M = {}
-local config = require "42header.config"
-local git = require "42header.utils.git"
+local config = require "brainboxheader.config"
+local git = require "brainboxheader.utils.git"
 
 ---Get username.
 ---@return string|nil
@@ -131,7 +131,7 @@ function M.update_header(header)
 end
 
 ---Inserts or updates the header in the current buffer.
-function M.stdheader()
+function M.BoxHeader()
   local header = M.gen_header()
   if not M.has_header(header) then
     M.insert_header(header)

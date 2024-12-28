@@ -1,10 +1,10 @@
 <h1 align="center">🛸 42 Header</h1>
 
-This plugin is whole re-write of [42header](https://github.com/42Paris/42header) in Lua.
+This plugin is whole re-write of [brainboxheader](https://github.com/42Paris/brainboxheader) in Lua.
 
 ## ✨ Features
 
-- Command: `Stdheader`
+- Command: `BoxHeader`
 - Auto update on save (optional)
 - Supports `commentstring`
 - Supports Git
@@ -21,9 +21,9 @@ This plugin is whole re-write of [42header](https://github.com/42Paris/42header)
 ```lua
 use {
   "Diogo-ss/42-header.nvim",
-  cmd = { "Stdheader" },
+  cmd = { "BoxHeader" },
   config = function()
-    require "42header"setup {
+    require "brainboxheader"setup {
       default_map = true, -- Default mapping <F1> in normal mode.
       auto_update = true, -- Update header when saving.
       user = "username", -- Your user.
@@ -42,7 +42,7 @@ use {
 ```lua
 {
   "Diogo-ss/42-header.nvim",
-  cmd = { "Stdheader" },
+  cmd = { "BoxHeader" },
   keys = { "<F1>" },
   opts = {
     default_map = true, -- Default mapping <F1> in normal mode.
@@ -52,7 +52,7 @@ use {
     -- add other options.
   },
   config = function(_, opts)
-    require("42header").setup(opts)
+    require("brainboxheader").setup(opts)
   end,
 }
 ```
