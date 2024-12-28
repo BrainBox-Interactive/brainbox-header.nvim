@@ -109,10 +109,10 @@ end
 ---@param header table: The header to compare with the contents of the existing buffer.
 ---@return boolean: `true` if the header exists, `false` otherwise.
 function M.has_header(header)
-  local lines = vim.api.nvim_buf_get_lines(0, 0, 11, false)
+  local lines = vim.api.nvim_buf_get_lines(0, 0, 16, false)
 
   -- Immutable lines that are used for checking.
-  for _, v in pairs { 1, 2, 3, 10, 11 } do
+  for _, v in pairs { 1, 2, 3, 15, 16 } do
     if header[v] ~= lines[v] then
       return false
     end
@@ -125,7 +125,7 @@ end
 ---@param header table: The header to insert.
 function M.insert_header(header)
   if not vim.api.nvim_buf_get_option(0, "modifiable") then
-    vim.notify("The current buffer cannot be modified.", vim.log.levels.WARN, { title = "42 Header" })
+    vim.notify("The current buffer cannot be modified.", vim.log.levels.WARN, { title = "BrainBox Header" })
     return
   end
   -- If the first line is not empty, the blank line will be added after the header.
@@ -139,14 +139,14 @@ end
 ---Update an existing header in the current buffer.
 ---@param header table: Header to override the current one.
 function M.update_header(header)
-  local immutable = { 6, 8 }
+  local immutable = { 10, 11, 13 }
 
   -- Copies immutable lines from existing header to updated header.
   for _, value in ipairs(immutable) do
     header[value] = vim.api.nvim_buf_get_lines(0, value - 1, value, false)[1]
   end
 
-  vim.api.nvim_buf_set_lines(0, 0, 11, false, header)
+  vim.api.nvim_buf_set_lines(0, 0, 16, false, header)
 end
 
 ---Inserts or updates the header in the current buffer.
