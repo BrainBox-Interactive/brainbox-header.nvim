@@ -86,7 +86,7 @@ function M.gen_header()
     else if i == #ascii - 1 then
       table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[i]))
     else
-      table.insert(header_lines, "", ascii[i]))
+      table.insert(header_lines, M.gen_line("", ascii[i]))
     end
   end
 
