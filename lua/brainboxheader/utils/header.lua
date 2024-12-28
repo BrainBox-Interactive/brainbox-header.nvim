@@ -79,10 +79,10 @@ function M.gen_header()
 
   -- Loop through each line of ASCII art
   for i = 1, #ascii do
-    if i == 1 then
+    if i == #ascii - 4 then
       -- Insert user info at the first line
       table.insert(header_lines, M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[i]))
-    elseif i == 2 then
+    elseif i == #ascii - 3 then
       table.insert(header_lines, M.gen_line("From BrainBox Interactive, " .. os.date "%Y" .. ".", ascii[i]))
     elseif i == #ascii - 1 then
       -- Insert creation info at the second-to-last line
