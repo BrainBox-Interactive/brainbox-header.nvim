@@ -41,7 +41,7 @@ use {
 
 ```lua
 {
-  "Diogo-ss/42-header.nvim",
+  "BrainBox-Interactive/brainbox-header.nvim",
   cmd = { "BoxHeader" },
   keys = { "<F1>" },
   opts = {
