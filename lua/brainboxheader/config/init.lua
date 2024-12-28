@@ -1,7 +1,7 @@
 local M = {}
 
 M.opts = {
-  length = 80,
+  length = 100,
   margin = 5,
   default_map = true,
   auto_update = true,
