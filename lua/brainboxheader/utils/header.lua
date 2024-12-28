@@ -79,7 +79,15 @@ function M.gen_header()
 
   -- Loop through each line of ASCII art
   for i = 1, #ascii do
-    table.insert(header_lines, M.gen_line("", ascii[i]))
+    if i == 1 then
+      table.insert(header_lines, M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[i]))
+    else if i == #ascii - 2 then
+      table.insert(header_lines, M.gen_line("Created: " .. date .. " by " .. M.user(), ascii[i]))
+    else if i == #ascii - 1 then
+      table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[i]))
+    else
+      table.insert(header_lines, "", ascii[i]))
+    end
   end
 
   -- Add the user and email information
