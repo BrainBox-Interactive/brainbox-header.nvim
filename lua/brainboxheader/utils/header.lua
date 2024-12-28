@@ -93,14 +93,6 @@ function M.gen_header()
       table.insert(header_lines, M.gen_line("", ascii[i]))
     end
   end
-
-  -- Add the user and email information
-  table.insert(header_lines, M.gen_line("By: " .. M.user() .. " <" .. M.email() .. ">", ascii[#ascii + 1] or ""))
-  table.insert(header_lines, M.gen_line("", ascii[#ascii + 2] or ""))
-  
-  -- Add creation and update information
-  table.insert(header_lines, M.gen_line("Created: " .. date .. " by " .. M.user(), ascii[#ascii + 3] or ""))
-  table.insert(header_lines, M.gen_line("Updated: " .. date .. " by " .. M.user(), ascii[#ascii + 4] or ""))
   
   table.insert(header_lines, empty_line)
   table.insert(header_lines, fill_line)
